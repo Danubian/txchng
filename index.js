@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 var sendgrid  = require('sendgrid')('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');
-//var sendgrid  = require('sendgrid')('danubian','Alphadog1');
-//var sendgrid  = require('sendgrid')('EraWt-c0Q4W0Isu9fYLGDQ');
 
 app.get('/', function (req, res) {
     res.send('Hello World!');
