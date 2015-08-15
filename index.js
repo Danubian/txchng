@@ -1,10 +1,19 @@
 var express = require('express');
 var app = express();
 var sendgrid  = require('sendgrid')('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');
-app.register('.html', require('jade'));
+var path = require('path');
+
+function getPath(filename)
+{
+   return path.join(__dirname, '/public', filename)
+}
 
 app.get('/', function (req, res) {
-    res.render('index.html');
+    res.sendFile(getPath('index.html'));
+});
+
+app.get('/map', function (req, res) {
+    res.sendFile(getPath('google.html'));
 });
 
 app.get('/sendgrid', function (req, res) {
