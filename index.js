@@ -1,9 +1,10 @@
 var express = require('express');
 var app = express();
 var sendgrid  = require('sendgrid')('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');
+app.register('.html', require('jade'));
 
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+    res.render('index.html');
 });
 
 app.get('/sendgrid', function (req, res) {
