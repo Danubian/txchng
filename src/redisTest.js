@@ -8,12 +8,21 @@ client.on("error", function (err) {
     console.log("Error " + err);
 });
 
-client.set("string key", "string val", redis.print);
-client.hset("hash key", "hashtest 1", "some value", redis.print);
-client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
-client.hkeys("hash key", function (err, replies) {
-    console.log(replies + " replies:");
+var GM_MARKER = "marker";
+var markerId = 1;
+var marker = {
+    x : -1,
+    y : -1,
+    text : "SWAG OVERLOAD"
+}
+
+var string = JSON.stringify(marker);
+client.hset(GM_MARKER, markerId, string, redis.print);
+client.hset([GM_MARKER, markerId + 1, string], redis.print);
+client.hkeys(GM_MARKER, function (err, replies) {
+    console.log(replies.length + " replies:");
     replies.forEach(function (reply, i) {
+        client.hget(GM_MARKER, i + 1, redis.print);
         console.log("    " + i + ": " + reply);
     });
     client.quit();

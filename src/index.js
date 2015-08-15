@@ -3,9 +3,11 @@ var app = express();
 var sendgrid  = require('sendgrid')('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');
 var path = require('path');
 
+app.use(express.static('public'));
+
 function getPath(filename)
 {
-   return path.join(__dirname, '/public', filename)
+   return path.join(__dirname, '../public', filename)
 }
 
 app.get('/', function (req, res) {
@@ -30,6 +32,14 @@ app.get('/sendgrid', function (req, res) {
         console.log(json);
         res.send(json);
     });
+});
+
+app.get("/markers", function (req, res) {
+
+});
+
+app.get("/index", function (req, res) {
+    res.sendFile(getPath('sb-index.html'));
 });
 
 var server = app.listen(3000, function () {
