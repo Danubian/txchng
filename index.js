@@ -9,7 +9,7 @@ function getPath(filename)
 }
 
 app.get('/', function (req, res) {
-    res.sendFile(getPath('index.html'));
+    res.sendFile(getPath('bootstrap-min.html'));
 });
 
 app.get('/map', function (req, res) {
