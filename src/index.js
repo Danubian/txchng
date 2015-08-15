@@ -11,7 +11,7 @@ function getPath(filename)
 }
 
 app.get('/', function (req, res) {
-    res.sendFile(getPath('bootstrap-min.html'));
+    res.sendFile(getPath('login.html'));
 });
 
 app.get('/map', function (req, res) {
@@ -39,7 +39,7 @@ app.get("/markers", function (req, res) {
 });
 
 app.get("/index", function (req, res) {
-    res.sendFile(getPath('sb-index.html'));
+    res.sendFile(getPath('pages/sb-index.html'));
 });
 
 var server = app.listen(3000, function () {
